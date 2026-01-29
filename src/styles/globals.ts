@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     body{
         font: 400 1rem "Roboto", sans-serif;
-        color: ${(props) => props.theme["slate-100"]};
+        color: ${(props) => props.theme["slate-500"]};
         height: auto;
         -webkit-font-smoothing: antialiased;  
     }

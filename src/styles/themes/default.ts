@@ -13,6 +13,7 @@ export const defaultTheme = {
   "green-100": "#3DD68C",
   "green-50": "#B1F1CB",
   "blue-500": "#0090FF",
+  "blue-700": "#4973FF",
   "pink-500": "oklch(66.7% 0.295 322.15)",
   "pink-400": "oklch(74% 0.238 322.16)",
 } as const;
