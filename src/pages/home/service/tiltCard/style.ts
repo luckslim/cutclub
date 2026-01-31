@@ -9,10 +9,9 @@ export const PageWrapper = styled.div`
 
 export const Card = styled(motion.div)`
   position: relative;
-  width: 18rem;
+  width: 100%;
+  min-height: 100%;
   /* Removido height fixo para permitir expansão */
-  height: auto;
-
   border-radius: 1rem;
   transform-style: preserve-3d;
   cursor: pointer;
@@ -31,9 +30,9 @@ export const CardInner = styled.div`
 
 export const Container = styled.div`
   /* Removido height fixo */
-  width: 100%;
+  width: auto;
   padding: 2px;
-  background-color: ${props=>props.theme["slate-50"]};
+  background-color: ${(props) => props.theme["slate-50"]};
   display: grid;
   align-items: center;
   justify-content: center;
@@ -51,7 +50,7 @@ export const Title = styled.div`
   background-color: ${(props) => props.theme["slate-950"]};
   color: ${(props) => props.theme["slate-50"]};
 
-  padding: 1rem;
+  padding: 5px;
 
   font-size: 1rem;
   font-weight: 900;
@@ -72,6 +71,16 @@ export const Body = styled.div`
   p {
     display: flex;
     gap: 3px;
+  }
+  span {
+    
+    img {
+      width: 50px;
+      border-radius: 8px;
+    }
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 `;
 
