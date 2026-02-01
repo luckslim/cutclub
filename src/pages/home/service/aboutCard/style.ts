@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled(motion.div)`
   display: flex;
   width: 100%;
-  min-height: 100%;
+  height: 300px;
   justify-content: center;
   background-color: ${(props) => props.theme["slate-50"]};
   border: 1px solid ${(props) => props.theme["slate-950"]};
@@ -12,11 +12,16 @@ export const Container = styled(motion.div)`
   cursor: pointer;
 
   transform-style: preserve-3d;
+  @media screen and (max-width: 700px) {
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+    width: 100%;
+  }
 `;
 export const ContainerColumnLeft = styled.div`
   flex: 1;
   display: grid;
-  gap: 1rem;
   padding: 1rem;
   width: 50%;
   span {
@@ -41,18 +46,33 @@ export const ContainerColumnLeft = styled.div`
     border: none;
     width: 50%;
     border-radius: 4px;
-    padding: 1rem;
     font-weight: 800;
     cursor: pointer;
     &:hover {
-       background-color: ${props=>props.theme["blue-500"]};
+      background-color: ${(props) => props.theme["blue-500"]};
+    }
+  }
+  @media screen and (max-width: 700px) {
+    gap: 1rem;
+    width: 100%;
+    button {
+      padding: 1rem;
+      background-color: ${(props) => props.theme["slate-950"]};
+      color: ${(props) => props.theme["slate-50"]};
+      border: none;
+      width: 50%;
+      border-radius: 4px;
+      font-weight: 800;
+      cursor: pointer;
+      &:hover {
+        background-color: ${(props) => props.theme["blue-500"]};
+      }
     }
   }
 `;
 export const ContainerColumnRight = styled.div`
   flex: 1;
   display: grid;
-  gap: 1rem;
   justify-content: start;
   padding: 1rem;
   background-color: #ffffff;
@@ -73,8 +93,10 @@ export const ContainerColumnRight = styled.div`
   span {
     color: ${(props) => props.theme["slate-950"]};
     display: flex;
-    gap: 1rem;
+    gap: 5px;
     align-items: center;
   }
-
+  @media screen and (max-width: 700px) {
+    gap: 1rem;
+  }
 `;
