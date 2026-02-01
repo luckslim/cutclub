@@ -11,6 +11,7 @@ import {
   Line,
 } from "./style";
 import { StarHalfIcon, StarIcon, type IconProps } from "@phosphor-icons/react";
+import FlowDiagram from "./diagram";
 
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
@@ -21,6 +22,7 @@ type ActionItem = {
 };
 type Props = {
   cardName: string;
+  userName: string;
   title: string;
   content: string;
   details: string;
@@ -32,6 +34,7 @@ export default function CardTilt({
   cardName,
   title,
   content,
+  userName,
   detailStrong,
   icon,
   details,
@@ -85,7 +88,7 @@ export default function CardTilt({
               <span>
                 <img src="https://media.licdn.com/dms/image/v2/D4D03AQFmWCXjW3bkgw/profile-displayphoto-scale_100_100/B4DZvyMJ2FHYAk-/0/1769294837490?e=1771459200&v=beta&t=ybCKUtYMbx7YzbSMWPVrgUJ-j3yZ-n_1tACqnjf9rv0"></img>
                 <div>
-                  <p>Lucas Soares Lima</p>
+                  <p>{userName}</p>
                   <p>
                     <StarIcon size={20}  weight="fill" />
                     <StarIcon size={20} weight="fill" />
@@ -96,6 +99,7 @@ export default function CardTilt({
                 </div>
               </span>
               <p>{content}</p>
+              <FlowDiagram/>
               <Line />
               <p>
                 {details}

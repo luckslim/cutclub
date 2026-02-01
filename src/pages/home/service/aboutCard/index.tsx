@@ -1,10 +1,16 @@
 import React, { useRef } from "react";
 import { useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
-import { BookmarksIcon, LockIcon, MapPinIcon, MoneyIcon, NotebookIcon } from "@phosphor-icons/react";
+import {
+  BookmarksIcon,
+  LockIcon,
+  MapPinIcon,
+  MoneyIcon,
+  NotebookIcon,
+} from "@phosphor-icons/react";
 
 import { Container, ContainerColumnLeft, ContainerColumnRight } from "./style";
 
-const ROTATION_RANGE = 32.5;
+const ROTATION_RANGE = 20.5;
 
 export default function AboutCard() {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -57,11 +63,7 @@ export default function AboutCard() {
         <p>
           Faça agendamentos com facilidade e encontre os melhores serviços perto
           de você através do nosso sistema de busca por GPS. Acompanhe os
-          trabalhos do seu estabelecimento favorito, como barbearias, spas,
-          estúdios de tatuagem e muito mais. Explore perfis, avaliações e
-          portfólios para escolher com segurança. Tenha controle dos seus
-          horários de forma prática e organizada. E o melhor: para usuários,
-          tudo isso é totalmente gratuito.
+          trabalhos do seu estabelecimento favorito.
         </p>
         <button>Começar</button>
       </ContainerColumnLeft>
@@ -69,20 +71,23 @@ export default function AboutCard() {
       <ContainerColumnRight>
         <h2>
           Aproveite gratuitamente{" "}
-          <BookmarksIcon weight="fill" color="blue" size={32} />
+          <BookmarksIcon weight="fill" color="blue" size={22} />
         </h2>
         <span>
-          Cadastro<strong>Seguro</strong> <LockIcon size={32} weight="fill" />{" "}
+          Cadastro<strong>Seguro</strong>- Criptografado{" "}
+          <LockIcon size={22} weight="fill" />{" "}
         </span>
         <span>
-          Facil <strong>Agendamento</strong>
-          <NotebookIcon size={32} weight="fill" />
+          Fácil <strong>Agendamento</strong>
+          <NotebookIcon size={22} weight="fill" />
         </span>
         <span>
-          Encontre <strong>lojas</strong> em sua região <MapPinIcon size={32} weight="fill" />
+          Encontre <strong>lojas</strong> em sua região{" "}
+          <MapPinIcon size={22} weight="fill" />
         </span>
         <span>
-          Pagamento <strong>rápido e seguro</strong> <MoneyIcon size={32} weight="fill" />
+          Pagamento <strong>rápido e seguro</strong>{" "}
+          <MoneyIcon size={22} weight="fill" />
         </span>
       </ContainerColumnRight>
     </Container>

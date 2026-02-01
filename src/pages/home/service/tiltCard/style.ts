@@ -30,7 +30,7 @@ export const CardInner = styled.div`
 
 export const Container = styled.div`
   /* Removido height fixo */
-  width: auto;
+  width: 100%;
   padding: 2px;
   background-color: ${(props) => props.theme["slate-50"]};
   display: grid;
@@ -45,6 +45,7 @@ export const Container = styled.div`
      não escape das bordas arredondadas do container */
   overflow: hidden;
   box-sizing: border-box;
+  
 `;
 export const Title = styled.div`
   background-color: ${(props) => props.theme["slate-950"]};
