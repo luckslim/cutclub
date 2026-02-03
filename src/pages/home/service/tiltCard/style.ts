@@ -77,7 +77,8 @@ export const Body = styled.div`
     
     img {
       width: 50px;
-      border-radius: 8px;
+      height: 50px;
+      border-radius: 9999px;
     }
     display: flex;
     align-items: center;

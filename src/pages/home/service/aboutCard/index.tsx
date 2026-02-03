@@ -1,18 +1,32 @@
 import React, { useRef } from "react";
-import { useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import {
-  BookmarksIcon,
-  LockIcon,
-  MapPinIcon,
-  MoneyIcon,
-  NotebookIcon,
-} from "@phosphor-icons/react";
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+  motion,
+} from "framer-motion";
+import { BookmarksIcon } from "@phosphor-icons/react";
 
 import { Container, ContainerColumnLeft, ContainerColumnRight } from "./style";
 
-const ROTATION_RANGE = 20.5;
+const ROTATION_RANGE = 32.5;
+const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
 
-export default function AboutCard() {
+type Props = {
+  plan: string;
+  leftTitle: string;
+  leftContent: string;
+  rightTitle: string;
+  rightContent: string[];
+};
+
+export default function AboutCard({
+  plan,
+  leftTitle,
+  leftContent,
+  rightTitle,
+  rightContent,
+}: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const x = useMotionValue(0);
@@ -31,13 +45,11 @@ export default function AboutCard() {
 
     const rect = ref.current.getBoundingClientRect();
 
-    // Posição do mouse normalizada entre -0.5 e 0.5
-    const offsetX = (e.clientX - rect.left) / rect.width - 0.5;
-    const offsetY = (e.clientY - rect.top) / rect.height - 0.5;
+    const mouseX = (e.clientX - rect.left) * ROTATION_RANGE;
+    const mouseY = (e.clientY - rect.top) * ROTATION_RANGE;
 
-    // Inverte o eixo X para o comportamento natural
-    const rX = offsetY * -ROTATION_RANGE;
-    const rY = offsetX * ROTATION_RANGE;
+    const rX = (mouseY / rect.height - HALF_ROTATION_RANGE) * -1;
+    const rY = mouseX / rect.width - HALF_ROTATION_RANGE;
 
     x.set(rX);
     y.set(rY);
@@ -49,47 +61,49 @@ export default function AboutCard() {
   };
 
   return (
-    <Container
+    // 👉 NOVO WRAPPER IGUAL AO CARD DE REFERÊNCIA
+    <motion.div
       ref={ref}
-      style={{ transform }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      style={{
+        transform,
+        transformStyle: "preserve-3d",
+        width: "100%",
+      }}
     >
-      <ContainerColumnLeft>
-        <span>
-          use<strong>gratis</strong>
-        </span>
-        <h2>Usuários</h2>
-        <p>
-          Faça agendamentos com facilidade e encontre os melhores serviços perto
-          de você através do nosso sistema de busca por GPS. Acompanhe os
-          trabalhos do seu estabelecimento favorito.
-        </p>
-        <button>Começar</button>
-      </ContainerColumnLeft>
+      {/* 👉 NOVA DIV DE PROFUNDIDADE */}
+      <div
+        style={{
+          transformStyle: "preserve-3d",
+          transform: "translateZ(60px)",
+        }}
+      >
+        {/* ⚠️ SEU COMPONENTE ORIGINAL – INTACTO */}
+        <Container>
+          <ContainerColumnLeft>
+            <span>
+              use<strong>{plan}</strong>
+            </span>
 
-      <ContainerColumnRight>
-        <h2>
-          Aproveite gratuitamente{" "}
-          <BookmarksIcon weight="fill" color="blue" size={22} />
-        </h2>
-        <span>
-          Cadastro<strong>Seguro</strong>- Criptografado{" "}
-          <LockIcon size={22} weight="fill" />{" "}
-        </span>
-        <span>
-          Fácil <strong>Agendamento</strong>
-          <NotebookIcon size={22} weight="fill" />
-        </span>
-        <span>
-          Encontre <strong>lojas</strong> em sua região{" "}
-          <MapPinIcon size={22} weight="fill" />
-        </span>
-        <span>
-          Pagamento <strong>rápido e seguro</strong>{" "}
-          <MoneyIcon size={22} weight="fill" />
-        </span>
-      </ContainerColumnRight>
-    </Container>
+            <h2>{leftTitle}</h2>
+
+            <p>{leftContent}</p>
+
+            <button>Começar</button>
+          </ContainerColumnLeft>
+
+          <ContainerColumnRight>
+            <h2>
+              {rightTitle}
+              <BookmarksIcon weight="fill" color="blue" size={22} />
+            </h2>
+            {rightContent.map((i) => (
+              <span>{i}</span>
+            ))}
+          </ContainerColumnRight>
+        </Container>
+      </div>
+    </motion.div>
   );
 }

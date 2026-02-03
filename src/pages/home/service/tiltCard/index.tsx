@@ -23,7 +23,9 @@ type ActionItem = {
 type Props = {
   cardName: string;
   userName: string;
+  urlImage: string;
   title: string;
+  step: string[];
   content: string;
   details: string;
   detailStrong: string;
@@ -32,7 +34,9 @@ type Props = {
 };
 export default function CardTilt({
   cardName,
+  urlImage,
   title,
+  step,
   content,
   userName,
   detailStrong,
@@ -86,7 +90,7 @@ export default function CardTilt({
             <Body>
               <h4>{title}</h4>
               <span>
-                <img src="https://media.licdn.com/dms/image/v2/D4D03AQFmWCXjW3bkgw/profile-displayphoto-scale_100_100/B4DZvyMJ2FHYAk-/0/1769294837490?e=1771459200&v=beta&t=ybCKUtYMbx7YzbSMWPVrgUJ-j3yZ-n_1tACqnjf9rv0"></img>
+                <img src={urlImage}></img>
                 <div>
                   <p>{userName}</p>
                   <p>
@@ -99,7 +103,7 @@ export default function CardTilt({
                 </div>
               </span>
               <p>{content}</p>
-              <FlowDiagram/>
+              <FlowDiagram steps={step}/>
               <Line />
               <p>
                 {details}
