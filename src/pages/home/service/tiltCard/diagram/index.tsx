@@ -2,15 +2,20 @@ import React from "react";
 import * as S from "./style";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 
-const steps = ["usuário", "Loja", "funcionário", "agendamento"];
+type FlowDiagramProps = {
+  steps: string[];
+};
 
-export default function FlowDiagram() {
+export default function FlowDiagram({ steps }: FlowDiagramProps) {
   return (
     <S.Container>
-      {steps.map((step) => (
+      {steps.map((step, index) => (
         <React.Fragment key={step}>
           <S.Box>{step}</S.Box>
-          <ArrowRightIcon size={22} />
+
+          {index !== steps.length - 1 && (
+            <ArrowRightIcon size={22} />
+          )}
         </React.Fragment>
       ))}
     </S.Container>

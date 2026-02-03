@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: grid;
   width: 100%;
+  justify-content: center;
   box-sizing: border-box;
   background-color: #e5e5f7;
   background-image:
@@ -22,8 +23,9 @@ export const Container = styled.div`
 export const ContainerRaw = styled.div`
   margin-top: -120px;
   display: flex;
-  padding: 1rem;
-  align-items: center; /* Força os filhos a terem a mesma altura */
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   @media screen and (max-width: 700px) {
     display: grid;

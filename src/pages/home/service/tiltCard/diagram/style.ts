@@ -12,6 +12,8 @@ export const Container = styled.div`
 
 export const Box = styled.div`
   background: #0e0e0e;
+  display: grid;
+  grid-column: 2;
   background-color: #ffffff;
   opacity: 0.4;
   background-size: 9px 9px;
